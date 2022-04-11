@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ürünler</title>
+
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h:form>
+                <h:commandButton styleClass="btn btn-secondary" action="/index" value="Geri Dön"/>
+
+            </h:form>
+            <hr></hr>
+            <h:form>
+                <div class="mb-3">
+                    <label class="form-label">urun_id</label>
+                    <h:inputText styleClass="form-control" value="#{urunBean.entity.urun_id}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">urun_adi</label>
+                    <h:inputText styleClass="form-control" value="#{urunBean.entity.urun_adi}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">urun_foto</label>
+                    <h:inputText styleClass="form-control" value="#{urunBean.entity.urun_foto}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">urun_acıklama</label>
+                    <h:inputText styleClass="form-control" value="#{urunBean.entity.urun_acıklama}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">urun_fiyat</label>
+                    <h:inputText styleClass="form-control" value="#{urunBean.entity.urun_fiyat}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">urun_stok</label>
+                    <h:inputText styleClass="form-control" value="#{urunBean.entity.urun_stok}"/>
+                </div>
+                
+                <div class="mb-3">
+                    <h:commandButton styleClass="btn btn-secondary "  action="#{urunBean.create()}" value="Create"/>
+                    <h:commandButton styleClass="btn btn-secondary"  action="#{urunBean.update()}" value="Update"/>
+                    
+                </div>
+            
+            <hr></hr>
+
+            <h:dataTable styleClass="table table-striped table-hover" value="#{urunBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">urun_id</f:facet>
+                        #{entity.urun_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">urun_adi</f:facet>
+                        #{entity.urun_adi}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">urun_foto</f:facet>
+                        #{entity.urun_foto}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">urun_acıklama</f:facet>
+                        #{entity.urun_acıklama}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">urun_fiyat</f:facet>
+                        #{entity.urun_fiyat}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">urun_stok</f:facet>
+                        #{entity.urun_stok}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">admin_priv</f:facet>
+                    <h:commandButton styleClass="btn btn-danger btn-sm"  action="#{urunBean.delete(entity)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-primary btn-sm"  action="#{urunBean.setEntity(entity)}" value="Update"/>
+                </h:column>
+            </h:dataTable>
+             </h:form>
+        </div>
+       
+    </h:body>
+</html>

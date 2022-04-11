@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Tedarikçi</title>
+
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h:form>
+                <h:commandButton styleClass="btn btn-secondary" action="/index" value="Geri Dön"/>
+
+            </h:form>
+            <hr></hr>
+            <h:form>
+                <div class="mb-3">
+                    <label class="form-label">tedarikci_id</label>
+                    <h:inputText styleClass="form-control" value="#{tedarikciBean.entity.tedarikci_id}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">tedarikci_adsoyad</label>
+                    <h:inputText styleClass="form-control" value="#{tedarikciBean.entity.tedarikci_adsoyad}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">tedarikci_adres</label>
+                    <h:inputText styleClass="form-control" value="#{tedarikciBean.entity.tedarikci_adres}"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">tedarikci_telno</label>
+                    <h:inputText styleClass="form-control" value="#{tedarikciBean.entity.tedarikci_telno}"/>
+                </div>
+                
+                
+                <div class="mb-3">
+                    <h:commandButton styleClass="btn btn-secondary "  action="#{tedarikciBean.create()}" value="Create"/>
+                    <h:commandButton styleClass="btn btn-secondary"  action="#{tedarikciBean.update()}" value="Update"/>
+                    
+                </div>
+            
+            <hr></hr>
+
+            <h:dataTable styleClass="table table-striped table-hover" value="#{tedarikciBean.list}" var="entity">
+                <h:column>
+                    <f:facet name="header">tedarikci_id</f:facet>
+                        #{entity.tedarikci_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">tedarikci_adsoyad</f:facet>
+                        #{entity.tedarikci_adsoyad}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">tedarikci_adres</f:facet>
+                        #{entity.tedarikci_adres}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">tedarikci_telno</f:facet>
+                        #{entity.tedarikci_telno}
+                </h:column>
+               
+                
+                <h:column>
+                    <f:facet name="header">admin_priv</f:facet>
+                    <h:commandButton styleClass="btn btn-danger btn-sm"  action="#{tedarikciBean.delete(entity)}" value="Delete"/>
+                    <h:commandButton styleClass="btn btn-primary btn-sm"  action="#{tedarikciBean.setEntity(entity)}" value="Update"/>
+                </h:column>
+            </h:dataTable>
+             </h:form>
+        </div>
+       
+    </h:body>
+</html>
